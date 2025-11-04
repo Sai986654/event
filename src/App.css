@@ -1,211 +1,31 @@
-/* 🌐 Global Styles */
+/* ============================
+   🌟 Global Reset & Theme
+============================ */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
 }
 
-body {
-  background-color: #f9fafc;
-  color: #333;
-}
-
-/* 🧭 Header */
-.header {
-  background-color: #222;
-  color: #fff;
-  padding: 15px 0;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-}
-
-.header nav ul {
+html,
+body,
+#root {
+  height: 100%;
+  font-family: 'Poppins', sans-serif;
+  scroll-behavior: smooth;
   display: flex;
-  justify-content: center;
-  list-style: none;
-  gap: 25px;
+  flex-direction: column;
 }
 
-.header nav a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
-
-.header nav a:hover {
-  color: #ff9900;
-}
-
-/* 🏠 Home Page */
-.home-container {
-  text-align: center;
-  padding: 120px 20px;
-}
-
-.home-container h1 {
-  font-size: 3rem;
-  color: #222;
-}
-
-.home-container p {
-  font-size: 1.2rem;
-  margin: 20px 0;
-}
-
-.home-container .btn {
-  background-color: #ff9900;
-  color: #fff;
-  padding: 12px 30px;
-  border: none;
-  border-radius: 8px;
-  font-size: 1rem;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-.home-container .btn:hover {
-  background-color: #e68200;
-}
-
-/* 📦 Service Selection Page */
-.service-selection {
-  padding: 60px 20px;
-  text-align: center;
-}
-
-.service-selection h2 {
-  margin-bottom: 30px;
-  font-size: 2rem;
-}
-
-.category-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 25px;
-}
-
-.category-card {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  width: 200px;
-  padding: 20px;
-  text-align: center;
-  text-decoration: none;
-  color: #222;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-.category-card:hover {
-  background-color: #ff9900;
-  color: #fff;
-  transform: translateY(-5px);
-}
-
-/* 🍽 Category Pages (Catering, Decoration, etc.) */
-.package {
-  background-color: #fff;
-  margin: 15px auto;
-  width: 60%;
-  padding: 20px;
-  border-radius: 10px;
-  border: 1px solid #ddd;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
-}
-
-.package:hover {
-  transform: translateY(-5px);
-}
-
-.package h4 {
-  font-size: 1.3rem;
-  margin-bottom: 10px;
-}
-
-.package p {
-  font-size: 1rem;
-  margin-bottom: 15px;
-}
-
-.package button {
-  background-color: #ff9900;
-  color: #fff;
-  border: none;
-  padding: 10px 25px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.package button:hover {
-  background-color: #e68200;
-}
-
-/* 🧾 Quotation Summary Page */
-.quotation-summary {
-  padding: 50px 30px;
-  max-width: 600px;
-  margin: auto;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 3px 12px rgba(0,0,0,0.1);
-}
-
-.quotation-summary h2 {
-  text-align: center;
-  margin-bottom: 25px;
-}
-
-.quotation-summary ul {
-  list-style: none;
-  padding: 0;
-}
-
-.quotation-summary li {
-  padding: 10px 0;
-  border-bottom: 1px solid #eee;
-  font-size: 1rem;
-}
-
-.quotation-summary h3 {
-  margin-top: 20px;
-  text-align: right;
-  color: #333;
-}
-
-.quotation-summary button {
-  display: inline-block;
-  margin-top: 25px;
-  margin-right: 10px;
-  padding: 10px 20px;
-  background-color: #ff9900;
-  border: none;
-  border-radius: 8px;
-  color: #fff;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.quotation-summary button:hover {
-  background-color: #e68200;
-}
-
-/* ===== Global Background Styling ===== */
-
+/* Elegant gradient background */
 body {
   background: linear-gradient(135deg, #fff7e6, #ffe6f2);
-  min-height: 100vh;
   color: #333;
-  background-attachment: fixed; /* ✅ makes gradient stay fixed while scrolling */
+  background-attachment: fixed;
+  min-height: 100vh;
 }
 
-/* Optional subtle texture */
+/* Subtle texture overlay */
 body::before {
   content: "";
   position: fixed;
@@ -219,18 +39,423 @@ body::before {
   z-index: 0;
 }
 
+main, header, footer {
+  position: relative;
+  z-index: 1;
+}
 
-/* 📞 Footer */
+/* ============================
+   🧭 Header
+============================ */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #222;
+  color: #fff;
+  padding: 15px 30px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header h1 {
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+}
+
+.header nav ul {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+}
+
+.header nav a {
+  color: #fff;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.header nav a:hover {
+  color: #ff5a5f;
+}
+
+/* Mobile Header */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 20px;
+  }
+
+  .header nav ul {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+}
+
+/* ============================
+   🏠 Home Page Styling
+============================ */
+.home-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 80vh;
+  padding: 80px 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.home-container h1 {
+  font-size: 2.5rem;
+  color: #ff5a5f;
+  margin-bottom: 20px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  animation: float 4s ease-in-out infinite;
+}
+
+.home-container p {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 40px;
+  line-height: 1.7;
+  max-width: 700px;
+}
+
+.home-buttons {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.home-buttons a,
+.home-buttons button {
+  background-color: #ff5a5f;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 25px;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+.home-buttons a:hover,
+.home-buttons button:hover {
+  background-color: #e14d52;
+  transform: translateY(-2px);
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+  100% { transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+  .home-container {
+    padding: 60px 15px;
+  }
+  .home-container h1 {
+    font-size: 2rem;
+  }
+  .home-container p {
+    font-size: 1rem;
+  }
+  .home-buttons a,
+  .home-buttons button {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* ============================
+   📷 Category Layout (Responsive for Big Screens)
+============================ */
+.category-container {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  align-items: start;
+  gap: 40px;
+  width: 100%;
+  max-width: 1400px;
+  margin: 40px auto;
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+
+.main-content {
+  width: 100%;
+}
+
+/* ============================
+   🧭 Sticky Sidebar (Desktop)
+============================ */
+
+.sidebar {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  height: fit-content;
+
+  position: sticky;   /* ✅ Magic line: makes it stick */
+  top: 100px;         /* ✅ adjust based on header height */
+  align-self: start;  /* ✅ prevents flex/grid alignment bugs */
+}
+
+.sidebar h3 {
+  margin-bottom: 10px;
+  color: #ff5a5f;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  border-radius: 6px;
+  transition: 0.3s;
+  cursor: pointer;
+  border-left: 4px solid transparent;
+}
+
+.sidebar li:hover {
+  background: #fff1f3;
+}
+
+.sidebar li.active {
+  background: #ff5a5f;
+  color: #fff;
+}
+
+.sidebar li.completed {
+  border-left: 4px solid #4caf50;
+}
+
+.sidebar li.active {
+  background: #ff5a5f;
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 3px 6px rgba(255, 90, 95, 0.3);
+}
+
+
+/* ============================
+   📱 Sidebar - Mobile View
+============================ */
+
+@media (max-width: 768px) {
+  .sidebar {
+    position: static; /* ✅ turns off sticky on mobile */
+    width: 100%;
+    display: flex;
+    overflow-x: auto;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .sidebar ul {
+    display: flex;
+    gap: 10px;
+  }
+
+  .sidebar li {
+    white-space: nowrap;
+    padding: 10px;
+  }
+}
+
+
+/* 🧱 Package Cards Grid Layout */
+.details-column {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.package-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  height: 100%;
+}
+
+.package-card.selected {
+  border: 2px solid #ff5a5f;
+  box-shadow: 0 0 12px rgba(255, 90, 95, 0.3);
+}
+
+.package-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* 🧭 Navigation buttons under the grid */
+.navigation {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+/* 📱 Responsive collapse */
+@media (max-width: 768px) {
+  .details-column {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ============================
+   📸 Photo Grid
+============================ */
+.photos-column {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.photos-column img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.photos-column img:hover {
+  transform: scale(1.03);
+}
+
+/* ============================
+   📊 Quotation Summary
+============================ */
+.quotation-summary {
+  max-width: 800px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.quotation-summary table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.quotation-summary th,
+.quotation-summary td {
+  border-bottom: 1px solid #eee;
+  padding: 12px;
+  text-align: center;
+}
+
+.quotation-summary th {
+  background: #ff5a5f;
+  color: #fff;
+}
+
+.quotation-summary h3 {
+  text-align: right;
+  margin-top: 20px;
+}
+
+/* ============================
+   ⚙️ Buttons
+============================ */
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background-color: #ff5a5f;
+  color: #fff;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: #e14d52;
+}
+
+/* ============================
+   📞 Footer
+============================ */
 .footer {
   background-color: #222;
   color: #fff;
   text-align: center;
-  padding: 15px 0;
-  margin-top: 60px;
+  padding: 15px 10px;
+  margin-top: auto;
+  width: 100%;
+  font-size: 1rem;
+  line-height: 1.5;
+  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.15);
 }
 
-.home-container {
-  background: url() no-repeat center center/cover;
-  height: 100vh;
-  color: white;
+@media (max-width: 600px) {
+  .footer {
+    font-size: 0.9rem;
+    padding: 12px 8px;
+  }
+}
+
+/* ============================
+   📱 Responsive Adjustments
+============================ */
+@media (max-width: 1024px) {
+  .category-container {
+    grid-template-columns: 220px 1fr;
+    gap: 30px;
+    padding: 0 25px;
+  }
+
+  .photos-column img {
+    height: 160px;
+  }
+}
+
+@media (max-width: 768px) {
+  .category-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0 20px;
+    gap: 25px;
+  }
+
+  .details-column {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .photos-column img {
+    height: 150px;
+  }
+
+  .package-card {
+    padding: 20px;
+  }
 }
