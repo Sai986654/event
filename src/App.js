@@ -32,7 +32,7 @@ function App() {
   return (
     <SelectionProvider>
       <Navbar />
-      <LiveSummarySidebar />
+      <LiveSummarySidebar /> 
       <ScrollToTop/>
       <AnimatePresence mode="wait">
         <motion.div
