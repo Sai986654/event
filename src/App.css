@@ -1,0 +1,236 @@
+/* 🌐 Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: #f9fafc;
+  color: #333;
+}
+
+/* 🧭 Header */
+.header {
+  background-color: #222;
+  color: #fff;
+  padding: 15px 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.header nav ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  gap: 25px;
+}
+
+.header nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.header nav a:hover {
+  color: #ff9900;
+}
+
+/* 🏠 Home Page */
+.home-container {
+  text-align: center;
+  padding: 120px 20px;
+}
+
+.home-container h1 {
+  font-size: 3rem;
+  color: #222;
+}
+
+.home-container p {
+  font-size: 1.2rem;
+  margin: 20px 0;
+}
+
+.home-container .btn {
+  background-color: #ff9900;
+  color: #fff;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.home-container .btn:hover {
+  background-color: #e68200;
+}
+
+/* 📦 Service Selection Page */
+.service-selection {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.service-selection h2 {
+  margin-bottom: 30px;
+  font-size: 2rem;
+}
+
+.category-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+}
+
+.category-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  width: 200px;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  color: #222;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.category-card:hover {
+  background-color: #ff9900;
+  color: #fff;
+  transform: translateY(-5px);
+}
+
+/* 🍽 Category Pages (Catering, Decoration, etc.) */
+.package {
+  background-color: #fff;
+  margin: 15px auto;
+  width: 60%;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.package:hover {
+  transform: translateY(-5px);
+}
+
+.package h4 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+.package p {
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+
+.package button {
+  background-color: #ff9900;
+  color: #fff;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.package button:hover {
+  background-color: #e68200;
+}
+
+/* 🧾 Quotation Summary Page */
+.quotation-summary {
+  padding: 50px 30px;
+  max-width: 600px;
+  margin: auto;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+}
+
+.quotation-summary h2 {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.quotation-summary ul {
+  list-style: none;
+  padding: 0;
+}
+
+.quotation-summary li {
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 1rem;
+}
+
+.quotation-summary h3 {
+  margin-top: 20px;
+  text-align: right;
+  color: #333;
+}
+
+.quotation-summary button {
+  display: inline-block;
+  margin-top: 25px;
+  margin-right: 10px;
+  padding: 10px 20px;
+  background-color: #ff9900;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.quotation-summary button:hover {
+  background-color: #e68200;
+}
+
+/* ===== Global Background Styling ===== */
+
+body {
+  background: linear-gradient(135deg, #fff7e6, #ffe6f2);
+  min-height: 100vh;
+  color: #333;
+  background-attachment: fixed; /* ✅ makes gradient stay fixed while scrolling */
+}
+
+/* Optional subtle texture */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(#ffffff20 1px, transparent 1px);
+  background-size: 30px 30px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+
+/* 📞 Footer */
+.footer {
+  background-color: #222;
+  color: #fff;
+  text-align: center;
+  padding: 15px 0;
+  margin-top: 60px;
+}
+
+.home-container {
+  background: url() no-repeat center center/cover;
+  height: 100vh;
+  color: white;
+}
