@@ -2,7 +2,6 @@ import React from "react";
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable"; // for table formatting
 import { useSelection } from "../context/SelectionContext";
-import {prices} from "../data/prices";
 import "../App.css";
 
 const QuotationSummary = () => {
