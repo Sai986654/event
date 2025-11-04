@@ -1,8 +1,6 @@
 import React, { useMemo, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
-import Lightbox from "react-awesome-lightbox";
-import "react-awesome-lightbox/build/style.css";
+import { useNavigate } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 import "../App.css";
 
 const Home = () => {
@@ -18,21 +16,22 @@ const Home = () => {
     []
   );
 
-  // 🎞️ Gallery Images
   const galleryImages = [
     "https://images.unsplash.com/photo-1591604466107-ec97de577aff?auto=format&fit=crop&w=1200&q=80",
     "https://images.unsplash.com/photo-1607082349566-187342375b9d?auto=format&fit=crop&w=1200&q=80",
     "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=1200&q=80",
     "https://images.unsplash.com/photo-1545665225-946f0b5b5e88?auto=format&fit=crop&w=1200&q=80",
-    "https://images.unsplash.com/photo-1604908811158-1ffebf8e9e36?auto=format&fit=crop&w=1200&q=80",
-    "https://images.unsplash.com/photo-1529634899087-cd78bf166c68?auto=format&fit=crop&w=1200&q=80",
-    "https://images.unsplash.com/photo-1529634944331-2f39e2a67b26?auto=format&fit=crop&w=1200&q=80",
-    "https://images.unsplash.com/photo-1602727962201-9b16b2f10f64?auto=format&fit=crop&w=1200&q=80",
   ];
 
-  // Lightbox state
-  const [photoIndex, setPhotoIndex] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
+  const [photoIndex, setPhotoIndex] = useState(0);
+
+  const handlePrev = () =>
+    setPhotoIndex(
+      (photoIndex - 1 + galleryImages.length) % galleryImages.length
+    );
+  const handleNext = () =>
+    setPhotoIndex((photoIndex + 1) % galleryImages.length);
 
   return (
     <main className="home-container">
@@ -50,11 +49,10 @@ const Home = () => {
         >
           <h1>Celebrate Every Moment with SPG Events 🎊</h1>
           <p>
-            From grand weddings to corporate functions, birthdays to receptions —  
-            we design, manage, and execute your event with creativity, elegance,  
+            From grand weddings to corporate functions, birthdays to receptions — 
+            we design, manage, and execute your event with creativity, elegance, 
             and precision. Your celebration, our perfection.
           </p>
-
           <div className="home-buttons">
             <button onClick={() => navigate("/service-selection")}>
               Get Quotation
@@ -67,41 +65,33 @@ const Home = () => {
       <section className="testimonials-section">
         <h2>What Our Clients Say 💬</h2>
         <div className="testimonials-container">
-          <motion.div
-            className="testimonial-card"
-            whileHover={{ scale: 1.05 }}
-            transition={{ type: "spring", stiffness: 300 }}
-          >
-            <p>
-              “SPG Events transformed our wedding into a dream come true! Every
-              detail was flawless, from décor to catering. Highly recommended!”
-            </p>
-            <h4>— Priya & Rakesh, Hyderabad</h4>
-          </motion.div>
-
-          <motion.div
-            className="testimonial-card"
-            whileHover={{ scale: 1.05 }}
-            transition={{ type: "spring", stiffness: 300 }}
-          >
-            <p>
-              “The professionalism and creativity were top-notch. Our corporate
-              annual event looked world-class. Kudos to the SPG team!”
-            </p>
-            <h4>— Sai Charan, TechNova Pvt Ltd</h4>
-          </motion.div>
-
-          <motion.div
-            className="testimonial-card"
-            whileHover={{ scale: 1.05 }}
-            transition={{ type: "spring", stiffness: 300 }}
-          >
-            <p>
-              “Birthday party setup was beyond expectations. Great theme
-              selection, beautiful decorations, and smooth coordination.”
-            </p>
-            <h4>— Keerthi, Vizag</h4>
-          </motion.div>
+          {[
+            {
+              quote:
+                "SPG Events transformed our wedding into a dream come true! Every detail was flawless, from décor to catering. Highly recommended!",
+              author: "Priya & Rakesh, Hyderabad",
+            },
+            {
+              quote:
+                "The professionalism and creativity were top-notch. Our corporate annual event looked world-class. Kudos to the SPG team!",
+              author: "Sai Charan, TechNova Pvt Ltd",
+            },
+            {
+              quote:
+                "Birthday party setup was beyond expectations. Great theme selection, beautiful decorations, and smooth coordination.",
+              author: "Keerthi, Vizag",
+            },
+          ].map((t, idx) => (
+            <motion.div
+              key={idx}
+              className="testimonial-card"
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <p>“{t.quote}”</p>
+              <h4>— {t.author}</h4>
+            </motion.div>
+          ))}
         </div>
       </section>
 
@@ -123,41 +113,43 @@ const Home = () => {
           ))}
         </div>
       </section>
-      {/* =======================
-          CALL TO ACTION (Contact Prompt)
-      ======================== */}
+
+      {/* CALL TO ACTION */}
       <section className="cta-section">
         <div className="cta-content">
           <h2>Ready to Plan Your Dream Event? ✨</h2>
           <p>
-            From weddings and birthdays to corporate galas —  
-            we bring your vision to life with creativity, elegance, and precision.
+            From weddings and birthdays to corporate galas — we bring your vision 
+            to life with creativity, elegance, and precision.
           </p>
           <button onClick={() => navigate("/contact")}>Contact Us</button>
         </div>
       </section>
 
-      {/* LIGHTBOX POPUP */}
-      {isOpen && (
-        <Lightbox
-          mainSrc={galleryImages[photoIndex]}
-          nextSrc={galleryImages[(photoIndex + 1) % galleryImages.length]}
-          prevSrc={
-            galleryImages[
-              (photoIndex + galleryImages.length - 1) % galleryImages.length
-            ]
-          }
-          onCloseRequest={() => setIsOpen(false)}
-          onMovePrevRequest={() =>
-            setPhotoIndex(
-              (photoIndex + galleryImages.length - 1) % galleryImages.length
-            )
-          }
-          onMoveNextRequest={() =>
-            setPhotoIndex((photoIndex + 1) % galleryImages.length)
-          }
-        />
-      )}
+      {/* CUSTOM LIGHTBOX */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            className="custom-lightbox"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <div className="lightbox-content">
+              <img src={galleryImages[photoIndex]} alt="Event preview" />
+              <button className="lightbox-close" onClick={() => setIsOpen(false)}>
+                ✖
+              </button>
+              <button className="lightbox-prev" onClick={handlePrev}>
+                ‹
+              </button>
+              <button className="lightbox-next" onClick={handleNext}>
+                ›
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </main>
   );
 };
