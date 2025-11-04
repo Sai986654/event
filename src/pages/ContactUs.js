@@ -1,116 +1,74 @@
-import React, { useState } from "react";
+import React from "react";
+import "../App.css";
 
 const ContactUs = () => {
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
-
-  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert("Thank you for contacting SPG Events — we’ll get back to you soon!");
-    setForm({ name: "", email: "", message: "" });
-  };
-
   return (
-    <main style={styles.container}>
-      <section style={styles.card}>
-        <h1 style={styles.heading}>Contact Us</h1>
-        <p style={styles.text}>
-          Have a question, or want a personalized quotation?  
-          Fill out the form below and our team will reach out within 24 hours.
-        </p>
+    <main className="contact-page">
+      {/* CONTACT DETAILS + FORM */}
+      <section className="contact-content">
+        <div className="contact-left">
+          <h2>Reach Us At</h2>
+          <p>
+            We’re always excited to discuss your event ideas and provide
+            personalized quotes.
+          </p>
 
-        <form onSubmit={handleSubmit} style={styles.form}>
-          <input
-            type="text"
-            name="name"
-            placeholder="Your Name"
-            value={form.name}
-            onChange={handleChange}
-            required
-            style={styles.input}
-          />
-          <input
-            type="email"
-            name="email"
-            placeholder="Your Email"
-            value={form.email}
-            onChange={handleChange}
-            required
-            style={styles.input}
-          />
+          <div className="contact-info">
+            <p>
+              📍 <strong>Address:</strong> SPG Events, Hyderabad, Telangana
+            </p>
+            <p>📞 <strong>Phone:</strong> +91 98765 43210</p>
+            <p>✉️ <strong>Email:</strong> info@spgevents.com</p>
+          </div>
+
+          <div className="social-links">
+            <a href="https://facebook.com" target="_blank" rel="noreferrer">
+              Facebook
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noreferrer">
+              Instagram
+            </a>
+            <a href="https://x.com" target="_blank" rel="noreferrer">
+              Twitter
+            </a>
+          </div>
+        </div>
+
+        <form
+          className="contact-form"
+          onSubmit={(e) => {
+            e.preventDefault();
+            alert("Thank you for contacting SPG Events! We’ll get in touch soon.");
+            e.target.reset();
+          }}
+        >
+          <h2>Send Us a Message</h2>
+
+          <input type="text" name="name" placeholder="Your Name" required />
+          <input type="email" name="email" placeholder="Your Email" required />
+          <input type="text" name="phone" placeholder="Phone Number" required />
           <textarea
             name="message"
-            placeholder="Your Message"
-            value={form.message}
-            onChange={handleChange}
+            rows="5"
+            placeholder="Tell us about your event..."
             required
-            style={styles.textarea}
-          />
-          <button type="submit" style={styles.button}>
-            Send Message
-          </button>
+          ></textarea>
+
+          <button type="submit">Send Message</button>
         </form>
+      </section>
+
+      {/* MAP SECTION */}
+      <section className="contact-map">
+        <iframe
+          title="SPG Events Location"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.246548441657!2d78.47469407512242!3d17.385044983512736!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb975fc9f5675b%3A0xf7e92ec2f9e08ed1!2sHyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1685980225553!5m2!1sen!2sin"
+          allowFullScreen=""
+          loading="lazy"
+        ></iframe>
       </section>
     </main>
   );
-};
-
-const styles = {
-  container: {
-    minHeight: "80vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "40px 20px",
-  },
-  card: {
-    maxWidth: 600,
-    width: "100%",
-    background: "#fff",
-    borderRadius: 12,
-    padding: "40px",
-    boxShadow: "0 3px 10px rgba(0,0,0,0.1)",
-  },
-  heading: {
-    color: "#ff5a5f",
-    marginBottom: 15,
-    textAlign: "center",
-  },
-  text: {
-    textAlign: "center",
-    marginBottom: 25,
-    color: "#555",
-  },
-  form: {
-    display: "flex",
-    flexDirection: "column",
-    gap: 15,
-  },
-  input: {
-    padding: "12px 15px",
-    borderRadius: 8,
-    border: "1px solid #ddd",
-    fontSize: "1rem",
-  },
-  textarea: {
-    padding: "12px 15px",
-    borderRadius: 8,
-    border: "1px solid #ddd",
-    fontSize: "1rem",
-    minHeight: 100,
-  },
-  button: {
-    backgroundColor: "#ff5a5f",
-    color: "#fff",
-    border: "none",
-    borderRadius: 8,
-    padding: "12px 20px",
-    fontSize: "1rem",
-    fontWeight: "500",
-    cursor: "pointer",
-    transition: "0.3s",
-  },
 };
 
 export default ContactUs;

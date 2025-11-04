@@ -1,11 +1,12 @@
 // src/pages/ServiceSelection.js
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { serviceOrder } from "../context/SelectionContext";
+import { useSelection } from "../context/SelectionContext";
 
 const ServiceSelection = () => {
   const navigate = useNavigate();
-
+  const { serviceOrder } = useSelection();
+  
   useEffect(() => {
     // Redirect to the first category
     if (serviceOrder.length > 0) {

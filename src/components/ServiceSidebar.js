@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { SelectionContext } from "../context/SelectionContext";
+import { useSelection } from "../context/SelectionContext";
 
 const ServiceSidebar = ({ currentCategory }) => {
-  const { selections, serviceOrder } = useContext(SelectionContext);
+  const { selections, serviceOrder } = useSelection();
   const navigate = useNavigate();
 
   return (

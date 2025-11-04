@@ -23,6 +23,7 @@ const Sangeet = () => (
     title="Sangeet"
     currentCategory="sangeet"
     packages={sangeetPackages}
+    layoutType="plans-first"
   />
 );
 

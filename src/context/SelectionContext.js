@@ -1,23 +1,32 @@
-// src/context/SelectionContext.js
 import React, { createContext, useContext, useState } from "react";
 
-// 🧭 Global Service Order — used to control flow between category pages
-export const serviceOrder = [
-  "catering",
-  "decoration",
-  "makeup",
-  "photography",
-  "sangeet"
-];
+// ✅ Create the context
+const SelectionContext = createContext();
 
-// 🧩 Create Context
-export const SelectionContext = createContext();
+// ✅ Custom hook for consuming context easily
+export const useSelection = () => {
+  const context = useContext(SelectionContext);
+  if (!context) {
+    throw new Error("useSelection must be used within a SelectionProvider");
+  }
+  return context;
+};
 
-// 🚀 Provider Component
+// ✅ The provider component (wraps your whole app)
 export const SelectionProvider = ({ children }) => {
+  // Store selected plans for each service category
   const [selections, setSelections] = useState({});
 
-  // Add or update selected plan for a service
+  // Define order of service categories
+  const serviceOrder = [
+    "photography",
+    "catering",
+    "makeup",
+    "decoration",
+    "sangeet",
+  ];
+
+  // Update the selection for a given category
   const updateSelection = (category, plan) => {
     setSelections((prev) => ({
       ...prev,
@@ -25,17 +34,22 @@ export const SelectionProvider = ({ children }) => {
     }));
   };
 
-  // Reset selections (if needed, e.g., starting over)
-  const resetSelections = () => setSelections({});
+  // Clear all selections (for restarting quotation flow)
+  const resetSelections = () => {
+    setSelections({});
+  };
+
+  // Global context value
+  const value = {
+    selections,
+    updateSelection,
+    resetSelections,
+    serviceOrder,
+  };
 
   return (
-    <SelectionContext.Provider
-      value={{ selections, updateSelection, resetSelections, serviceOrder }}
-    >
+    <SelectionContext.Provider value={value}>
       {children}
     </SelectionContext.Provider>
   );
 };
-
-// Custom Hook (optional but clean)
-export const useSelection = () => useContext(SelectionContext);

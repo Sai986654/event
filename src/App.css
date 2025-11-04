@@ -6,7 +6,9 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+html {
+  scroll-behavior: smooth;
+}
 html,
 body,
 #root {
@@ -99,16 +101,12 @@ main, header, footer {
    🏠 Home Page Styling
 ============================ */
 .home-container {
+  position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  min-height: 80vh;
-  padding: 80px 20px;
-  max-width: 1000px;
-  margin: 0 auto;
+  width: 100%;
 }
+
 
 .home-container h1 {
   font-size: 2.5rem;
@@ -194,88 +192,6 @@ main, header, footer {
 
 .main-content {
   width: 100%;
-}
-
-/* ============================
-   🧭 Sticky Sidebar (Desktop)
-============================ */
-
-.sidebar {
-  background: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  height: fit-content;
-
-  position: sticky;   /* ✅ Magic line: makes it stick */
-  top: 100px;         /* ✅ adjust based on header height */
-  align-self: start;  /* ✅ prevents flex/grid alignment bugs */
-}
-
-.sidebar h3 {
-  margin-bottom: 10px;
-  color: #ff5a5f;
-}
-
-.sidebar ul {
-  list-style: none;
-  padding: 0;
-}
-
-.sidebar li {
-  padding: 10px 12px;
-  margin-bottom: 8px;
-  border-radius: 6px;
-  transition: 0.3s;
-  cursor: pointer;
-  border-left: 4px solid transparent;
-}
-
-.sidebar li:hover {
-  background: #fff1f3;
-}
-
-.sidebar li.active {
-  background: #ff5a5f;
-  color: #fff;
-}
-
-.sidebar li.completed {
-  border-left: 4px solid #4caf50;
-}
-
-.sidebar li.active {
-  background: #ff5a5f;
-  color: #fff;
-  font-weight: 600;
-  box-shadow: 0 3px 6px rgba(255, 90, 95, 0.3);
-}
-
-
-/* ============================
-   📱 Sidebar - Mobile View
-============================ */
-
-@media (max-width: 768px) {
-  .sidebar {
-    position: static; /* ✅ turns off sticky on mobile */
-    width: 100%;
-    display: flex;
-    overflow-x: auto;
-    justify-content: space-between;
-    gap: 10px;
-    padding: 10px;
-  }
-
-  .sidebar ul {
-    display: flex;
-    gap: 10px;
-  }
-
-  .sidebar li {
-    white-space: nowrap;
-    padding: 10px;
-  }
 }
 
 
@@ -459,3 +375,1185 @@ button:hover {
     padding: 20px;
   }
 }
+
+/* ============================
+   🌟 Fullscreen Hero Section — FINAL FIX
+============================ */
+
+.hero-section {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* ✅ keeps background visible even on scroll */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Overlay layer (semi-transparent for text contrast) */
+.hero-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 0;
+}
+
+/* Text content always on top */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  max-width: 900px;
+  padding: 0 20px;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  color: #ff5a5f;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.hero-content p {
+  font-size: 1.3rem;
+  line-height: 1.7;
+  color: #f5f5f5;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+  margin-bottom: 40px;
+}
+
+/* Buttons */
+.hero-content .home-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  z-index: 3;
+}
+
+.hero-content button,
+.hero-content a {
+  background-color: #ff5a5f;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 25px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.hero-content button:hover,
+.hero-content a:hover {
+  background-color: #e14d52;
+  transform: translateY(-3px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-section {
+    height: 80vh;
+    background-attachment: scroll; /* fixes mobile safari rendering */
+  }
+
+  .hero-content h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+}
+
+
+/* ============================
+   💬 Testimonials Section
+============================ */
+.testimonials-section {
+  background: linear-gradient(90deg, #fffaf0, #fff0f5);
+  padding: 80px 20px;
+  text-align: center;
+  color: #333;
+}
+
+.testimonials-section h2 {
+  font-size: 2rem;
+  margin-bottom: 40px;
+  color: #ff5a5f;
+  font-weight: 700;
+}
+
+.testimonials-container {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 30px;
+  flex-wrap: wrap;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.testimonial-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 30px 25px;
+  max-width: 320px;
+  flex: 1 1 300px;
+  transition: all 0.3s ease;
+}
+
+.testimonial-card:hover {
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+}
+
+.testimonial-card p {
+  font-style: italic;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.testimonial-card h4 {
+  color: #ff5a5f;
+  font-weight: 600;
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+  .testimonials-section {
+    padding: 60px 10px;
+  }
+
+  .testimonials-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .testimonial-card {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+}
+
+/* ============================
+   📸 GALLERY SECTION
+============================ */
+.gallery-section {
+  background: #fff;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.gallery-section h2 {
+  font-size: 2rem;
+  color: #ff5a5f;
+  margin-bottom: 40px;
+  font-weight: 700;
+}
+
+/* Grid layout */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.gallery-item {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+/* Hover zoom */
+.gallery-item:hover img {
+  transform: scale(1.1);
+}
+
+/* Optional dark overlay on hover */
+.gallery-item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.gallery-item:hover::after {
+  opacity: 1;
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+  .gallery-section {
+    padding: 60px 10px;
+  }
+  .gallery-section h2 {
+    font-size: 1.6rem;
+  }
+}
+/* ============================
+   🚀 CALL TO ACTION SECTION
+============================ */
+.cta-section {
+  background: linear-gradient(90deg, #ff5a5f, #ff767a);
+  color: #fff;
+  text-align: center;
+  padding: 80px 20px;
+  margin-top: 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1500&q=80")
+    center/cover no-repeat;
+  opacity: 0.25;
+  z-index: 0;
+}
+
+.cta-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.cta-content h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.cta-content p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 35px;
+  color: #fdfdfd;
+}
+
+.cta-content button {
+  background: #fff;
+  color: #ff5a5f;
+  border: none;
+  border-radius: 8px;
+  padding: 14px 30px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.cta-content button:hover {
+  transform: translateY(-3px);
+  background: #ffe5e6;
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+  .cta-section {
+    padding: 60px 15px;
+  }
+
+  .cta-content h2 {
+    font-size: 1.8rem;
+  }
+
+  .cta-content p {
+    font-size: 1rem;
+  }
+}
+/* ============================
+   📞 CONTACT PAGE STYLING
+============================ */
+.contact-page {
+  font-family: "Poppins", sans-serif;
+  color: #333;
+}
+
+/* MAIN CONTENT */
+.contact-content {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 50px;
+  max-width: 1100px;
+  margin: 80px auto;
+  flex-wrap: wrap;
+  padding: 0 20px;
+}
+
+/* LEFT INFO COLUMN */
+.contact-left {
+  flex: 1;
+  min-width: 300px;
+}
+
+.contact-left h2 {
+  font-size: 1.8rem;
+  color: #ff5a5f;
+  margin-bottom: 15px;
+}
+
+.contact-info p {
+  margin: 8px 0;
+  font-size: 1rem;
+}
+
+.social-links {
+  margin-top: 25px;
+}
+
+.social-links a {
+  display: inline-block;
+  margin-right: 15px;
+  color: #ff5a5f;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+  color: #e14d52;
+}
+
+/* FORM */
+.contact-form {
+  flex: 1;
+  min-width: 320px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 30px 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-form h2 {
+  color: #ff5a5f;
+  margin-bottom: 10px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #ff5a5f;
+}
+
+.contact-form button {
+  background: #ff5a5f;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.contact-form button:hover {
+  background: #e14d52;
+  transform: translateY(-3px);
+}
+
+/* MAP SECTION */
+.contact-map iframe {
+  width: 100%;
+  height: 400px;
+  border: none;
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+
+  .contact-content {
+    flex-direction: column;
+    gap: 40px;
+    margin: 60px auto;
+  }
+
+  .contact-form {
+    width: 100%;
+  }
+}
+
+/* ============================
+   🏢 ABOUT PAGE STYLING
+============================ */
+.about-page {
+  font-family: "Poppins", sans-serif;
+  color: #333;
+}
+
+/* HERO SECTION */
+.about-hero {
+  background: linear-gradient(90deg, #ff5a5f, #ff767a);
+  color: #fff;
+  text-align: center;
+  padding: 100px 20px 80px;
+}
+
+.about-hero h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.about-hero p {
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* WHO WE ARE */
+.about-intro {
+  padding: 80px 20px;
+  background: #fff;
+}
+
+.intro-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 1100px;
+  margin: 0 auto;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.intro-content img {
+  width: 450px;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.intro-content h2 {
+  color: #ff5a5f;
+  margin-bottom: 15px;
+  font-size: 1.8rem;
+}
+
+.intro-content p {
+  line-height: 1.7;
+  color: #555;
+}
+
+/* VALUES SECTION */
+.about-values {
+  background: #fffaf0;
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.about-values h2 {
+  font-size: 2rem;
+  color: #ff5a5f;
+  margin-bottom: 40px;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.value-card {
+  background: #fff;
+  padding: 25px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.value-card:hover {
+  transform: translateY(-5px);
+}
+
+.value-card h3 {
+  color: #ff5a5f;
+  margin-bottom: 12px;
+}
+
+/* TEAM SECTION */
+.about-team {
+  padding: 80px 20px;
+  text-align: center;
+  background: #fff;
+}
+
+.about-team h2 {
+  font-size: 2rem;
+  color: #ff5a5f;
+  margin-bottom: 40px;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.team-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.team-card:hover {
+  transform: translateY(-5px);
+}
+
+.team-card img {
+  width: 100%;
+  height: 250px;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+.team-card h4 {
+  color: #333;
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+
+.team-card p {
+  color: #777;
+  font-size: 0.95rem;
+}
+
+/* CTA SECTION */
+.about-cta {
+  text-align: center;
+  background: linear-gradient(90deg, #ff5a5f, #ff767a);
+  color: #fff;
+  padding: 80px 20px;
+}
+
+.about-cta h2 {
+  font-size: 2rem;
+  margin-bottom: 25px;
+}
+
+.about-cta button {
+  background: #fff;
+  color: #ff5a5f;
+  border: none;
+  border-radius: 8px;
+  padding: 14px 28px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.about-cta button:hover {
+  background: #ffe5e6;
+  transform: translateY(-3px);
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+  .intro-content {
+    flex-direction: column;
+  }
+
+  .intro-content img {
+    width: 100%;
+    height: auto;
+  }
+
+  .about-hero {
+    padding: 80px 15px;
+  }
+
+  .about-hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .about-hero p {
+    font-size: 1rem;
+  }
+}
+
+/* ============================
+   💬 FLOATING CONTACT WIDGET
+============================ */
+.floating-contact {
+  position: fixed;
+  bottom: 100px;
+  right: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 9999;
+}
+
+.float-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ff5a5f;
+  color: #fff;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.float-btn:hover {
+  transform: scale(1.1);
+}
+
+.float-btn.whatsapp {
+  background: #25d366;
+}
+
+.float-btn.call {
+  background: #ff5a5f;
+}
+
+/* Responsive (hide on very small screens if needed) */
+@media (max-width: 480px) {
+  .floating-contact {
+    right: 15px;
+    bottom: 15px;
+  }
+  .float-btn {
+    width: 45px;
+    height: 45px;
+  }
+}
+
+/* ============================
+   ✨ Elegant Navbar Styling
+============================ */
+.elegant-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  transition: background 0.3s ease;
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* LOGO */
+.navbar-logo {
+  cursor: pointer;
+  font-weight: 800;
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.brand-main {
+  color: #ff5a5f;
+  font-size: 1.8rem;
+  letter-spacing: 1px;
+}
+
+.brand-sub {
+  font-size: 1.2rem;
+  color: #333;
+  font-weight: 500;
+}
+
+/* LINKS */
+.navbar-links {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.navbar-links a {
+  position: relative;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.navbar-links a:hover {
+  color: #ff5a5f;
+}
+
+/* Active link underline animation */
+.navbar-links a.active-link::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #ff5a5f;
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+/* MOBILE MENU */
+.menu-toggle {
+  display: none;
+  cursor: pointer;
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .navbar-links {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    padding: 30px 0;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-200%);
+    opacity: 0;
+    transition: all 0.4s ease;
+  }
+
+  .navbar-links.open {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
+
+/* ============================
+   🧾 QUOTATION SUMMARY PAGE
+============================ */
+.summary-page {
+  font-family: "Poppins", sans-serif;
+  background: #fffaf0;
+  min-height: 100vh;
+  padding: 60px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.summary-container {
+  background: #fff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  width: 90%;
+  max-width: 900px;
+}
+
+.summary-container h1 {
+  text-align: center;
+  color: #ff5a5f;
+  margin-bottom: 30px;
+  font-size: 2rem;
+}
+
+.summary-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+}
+
+.summary-table th,
+.summary-table td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: center;
+}
+
+.summary-table th {
+  background: #ff5a5f;
+  color: #fff;
+  font-weight: 600;
+}
+
+.summary-table tr:nth-child(even) {
+  background: #f9f9f9;
+}
+
+.total-label {
+  text-align: right;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.total-value {
+  color: #ff5a5f;
+  font-weight: 700;
+}
+
+.summary-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+.summary-buttons button {
+  background: #ff5a5f;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 22px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.summary-buttons button:hover {
+  background: #e14d52;
+  transform: translateY(-2px);
+}
+
+.no-selection {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #666;
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+  .summary-container {
+    padding: 25px;
+  }
+
+  .summary-buttons {
+    flex-direction: column;
+  }
+}
+
+/* ============================
+   💰 LIVE QUOTATION SIDEBAR
+============================ */
+.live-summary-sidebar {
+  position: fixed;
+  top: 100px;
+  right: 20px;
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  width: 280px;
+  max-height: 80vh;
+  overflow-y: auto;
+  padding: 20px;
+  z-index: 999;
+  font-family: "Poppins", sans-serif;
+  transition: all 0.3s ease;
+}
+
+.live-summary-sidebar h3 {
+  color: #ff5a5f;
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+}
+
+.live-summary-sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.summary-category {
+  font-weight: 600;
+  color: #333;
+}
+
+.summary-plan {
+  color: #777;
+  font-size: 0.95rem;
+}
+
+.summary-price {
+  font-weight: 600;
+  color: #ff5a5f;
+}
+
+.summary-total {
+  margin-top: 15px;
+  padding-top: 10px;
+  border-top: 2px solid #ff5a5f;
+  font-size: 1.1rem;
+  display: flex;
+  justify-content: space-between;
+  color: #333;
+}
+
+.view-summary-btn {
+  margin-top: 15px;
+  background-color: #ff5a5f;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 18px;
+  cursor: pointer;
+  font-weight: 600;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+.view-summary-btn:hover {
+  background-color: #e14d52;
+  transform: translateY(-2px);
+}
+
+/* 📱 Mobile Responsive */
+@media (max-width: 900px) {
+  .live-summary-sidebar {
+    position: static;
+    width: 100%;
+    max-width: none;
+    margin-top: 20px;
+    border-radius: 10px;
+  }
+}
+
+.sidebar {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  height: fit-content;
+}
+
+.sidebar h3 {
+  margin-bottom: 10px;
+  color: #ff5a5f;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  border-radius: 6px;
+  transition: 0.3s;
+  cursor: pointer;
+  border-left: 4px solid transparent;
+}
+
+.sidebar li:hover {
+  background: #fff1f3;
+}
+
+.sidebar li.active {
+  background: #ff5a5f;
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 3px 6px rgba(255, 90, 95, 0.3);
+}
+
+.sidebar li.completed {
+  border-left: 4px solid #4caf50;
+}
+
+/* Mobile sidebar layout */
+@media (max-width: 768px) {
+  .sidebar {
+    position: static;
+    width: 100%;
+    display: flex;
+    overflow-x: auto;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .sidebar ul {
+    display: flex;
+    gap: 10px;
+  }
+
+  .sidebar li {
+    white-space: nowrap;
+    padding: 10px;
+  }
+}
+
+/* ============================
+   💬 Floating Request Callback
+============================ */
+.floating-chat-btn {
+  position: fixed;
+  bottom: 23px;
+  right: 25px;
+  background: #ff5a5f;
+  color: #fff;
+  font-size: 1.5rem;
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.floating-chat-btn:hover {
+  transform: scale(1.1);
+  background: #e14d52;
+}
+
+/* Popup Chat Form */
+.chat-popup {
+  position: fixed;
+  bottom: 100px;
+  right: 30px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  width: 280px;
+  z-index: 999;
+  animation: fadeInUp 0.3s ease;
+}
+
+.chat-popup h3 {
+  margin-bottom: 12px;
+  color: #ff5a5f;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.chat-popup form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.chat-popup input,
+.chat-popup textarea {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 0.95rem;
+  width: 100%;
+}
+
+.chat-popup button {
+  background-color: #ff5a5f;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.chat-popup button:hover {
+  background-color: #e14d52;
+}
+
+.status-msg {
+  text-align: center;
+  font-size: 0.9rem;
+  margin-top: 8px;
+  color: #555;
+}
+
+/* Small animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+  .floating-chat-btn {
+    right: 15px;
+    bottom: 20px;
+  }
+
+  .chat-popup {
+    right: 10px;
+    width: 90%;
+    bottom: 80px;
+  }
+}
+
