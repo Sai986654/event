@@ -18,11 +18,19 @@ const cateringPackages = {
   ],
 };
 
+const cateringPhotos = [
+  {url:"https://yjthu6vkxab3pogk.public.blob.vercel-storage.com/catering/download%20%281%29.jpg"},
+  {url:"https://yjthu6vkxab3pogk.public.blob.vercel-storage.com/catering/download%20%282%29.jpg"},
+  {url:"https://yjthu6vkxab3pogk.public.blob.vercel-storage.com/catering/download%20%283%29.jpg"},
+  {url:"https://yjthu6vkxab3pogk.public.blob.vercel-storage.com/catering/download.jpg"},
+]
+
 const Catering = ()=>(
 <CategoryPageLayout
     title="Catering"
     currentCategory="catering"
     packages={cateringPackages}
+    photos={cateringPhotos}
 />
 );
 

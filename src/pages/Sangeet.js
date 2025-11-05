@@ -18,12 +18,19 @@ const sangeetPackages = {
   ],
 };
 
+const sangeetPhotos = [
+  {url:"https://yjthu6vkxab3pogk.public.blob.vercel-storage.com/sangeet/images%20%281%29.jpg"},
+  {url:"https://yjthu6vkxab3pogk.public.blob.vercel-storage.com/sangeet/images%20%282%29.jpg"},
+  {url:"https://yjthu6vkxab3pogk.public.blob.vercel-storage.com/sangeet/images%20%283%29.jpg"},
+  {url:"https://yjthu6vkxab3pogk.public.blob.vercel-storage.com/sangeet/images.jpg"},
+]
+
 const Sangeet = () => (
   <CategoryPageLayout
     title="Sangeet"
     currentCategory="sangeet"
     packages={sangeetPackages}
-    layoutType="plans-first"
+    photos={sangeetPhotos}
   />
 );
 

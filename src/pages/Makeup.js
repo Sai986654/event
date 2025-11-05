@@ -23,11 +23,19 @@ const makeupPackages = {
   ],
 };
 
+const makeupPhotos = [
+  {url : "https://yjthu6vkxab3pogk.public.blob.vercel-storage.com/makeup/download%20%281%29.jpg"},
+  {url : "https://yjthu6vkxab3pogk.public.blob.vercel-storage.com/makeup/download.jpg"},
+  {url : "https://yjthu6vkxab3pogk.public.blob.vercel-storage.com/makeup/rishabhagarwal-dulhan-makeup.jpg"},
+  {url : "https://yjthu6vkxab3pogk.public.blob.vercel-storage.com/makeup/Non-Dramatic-South-Indian.jpg"},
+]
+
 const Makeup = () => (
   <CategoryPageLayout
     title="Makeup"
     currentCategory="makeup"
     packages={makeupPackages}
+    photos={makeupPhotos}
   />
 );
 

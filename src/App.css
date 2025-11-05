@@ -1286,23 +1286,33 @@ button:hover {
   }
 }
 
+/* ============================
+   💡 CATEGORY STEPS SIDEBAR
+============================ */
 .sidebar {
-  position: fixed;
   background: #fff;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   height: fit-content;
+  position: sticky;
+  top: 100px;
+  align-self: start;
+  flex: 0 0 240px;
+  font-family: "Poppins", sans-serif;
 }
 
 .sidebar h3 {
   margin-bottom: 10px;
   color: #ff5a5f;
+  font-size: 1.1rem;
+  font-weight: 600;
 }
 
 .sidebar ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .sidebar li {
@@ -1312,6 +1322,7 @@ button:hover {
   transition: 0.3s;
   cursor: pointer;
   border-left: 4px solid transparent;
+  white-space: nowrap;
 }
 
 .sidebar li:hover {
@@ -1329,33 +1340,9 @@ button:hover {
   border-left: 4px solid #4caf50;
 }
 
-/* Mobile sidebar layout */
-@media (max-width: 768px) {
-  .sidebar {
-    position: static;
-    width: auto;
-    display: flex;
-    overflow-x: auto;
-    justify-content: space-between;
-    gap: 10px;
-    padding: 10px;
-  }
-
-  .sidebar ul {
-    display: flex;
-    gap: 10px;
-  }
-
-  .sidebar li {
-    white-space: nowrap;
-    padding: 10px;
-  }
-}
-
 /* ============================
-   💰 LIVE & COLLAPSIBLE QUOTATION SIDEBAR
+   💰 QUOTATION SUMMARY SIDEBAR
 ============================ */
-
 .live-summary-sidebar {
   position: fixed;
   top: 100px;
@@ -1369,18 +1356,17 @@ button:hover {
   overflow-y: auto;
   padding: 18px;
   z-index: 999;
-  font-family: "Poppins", sans-serif;
   transition: all 0.3s ease;
+  font-family: "Poppins", sans-serif;
 }
 
-/* Collapsed State */
+/* Collapsed state */
 .live-summary-sidebar.collapsed {
   max-height: 60px;
   overflow: hidden;
   padding: 10px 18px;
 }
 
-/* Header with collapse toggle */
 .sidebar-header {
   display: flex;
   justify-content: space-between;
@@ -1391,13 +1377,12 @@ button:hover {
   margin: 0;
   font-size: 1.1rem;
   color: #ff5a5f;
-  font-weight: 600;
 }
 
 .collapse-btn {
   border: none;
   background: none;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   color: #333;
   cursor: pointer;
   transition: transform 0.2s ease, color 0.2s ease;
@@ -1408,11 +1393,10 @@ button:hover {
   color: #ff5a5f;
 }
 
-/* List Styles */
 .live-summary-sidebar ul {
   list-style: none;
   padding: 0;
-  margin: 12px 0 0 0;
+  margin: 10px 0 0 0;
   transition: max-height 0.3s ease, opacity 0.3s ease;
 }
 
@@ -1445,7 +1429,6 @@ button:hover {
   color: #ff5a5f;
 }
 
-/* Total Section */
 .summary-total {
   margin-top: 10px;
   padding-top: 8px;
@@ -1456,7 +1439,6 @@ button:hover {
   color: #333;
 }
 
-/* View Full Quotation Button */
 .view-summary-btn {
   margin-top: 12px;
   background-color: #ff5a5f;
@@ -1476,22 +1458,50 @@ button:hover {
 }
 
 /* ============================
-   📱 MOBILE RESPONSIVE DESIGN
+   📱 MOBILE RESPONSIVE
 ============================ */
 @media (max-width: 900px) {
+  /* Both sidebars stack vertically */
+  .sidebar,
   .live-summary-sidebar {
-    position: static;
-    width: 100%;
+    position: static !important;
+    width: 100% !important;
     max-width: none;
     margin-top: 20px;
     border-radius: 10px;
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Steps Sidebar scrolls horizontally */
+  .sidebar ul {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .sidebar li {
+    flex-shrink: 0;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    padding: 10px 14px;
+  }
+
+  .sidebar li.active {
+    background: #ff5a5f;
+    color: #fff;
+    border: none;
+  }
+
+  /* Quotation Sidebar collapsible layout */
+  .live-summary-sidebar {
     max-height: none;
+    padding: 14px;
   }
 
   .live-summary-sidebar.collapsed {
     max-height: 50px;
-    overflow: hidden;
   }
 
   .sidebar-header h3 {
@@ -1503,10 +1513,10 @@ button:hover {
   }
 
   .view-summary-btn {
-    margin-top: 10px;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
   }
 }
+
 
 
 

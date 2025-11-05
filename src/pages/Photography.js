@@ -34,27 +34,14 @@ const photographyPackages = {
 };
 
 const photographyPhotos = [
-  { url: "https://i.imgur.com/MmXY4zo.jpeg", alt: "Photo" },
-  { url: "https://i.imgur.com/mzdDQ6b.jpeg", alt: "Photo" },
-  { url: "https://i.imgur.com/ozZnTB5.jpeg", alt: "Photo" },
-  { url: "https://i.imgur.com/wyXGxd7.jpeg", alt: "Photo" },
-  { url: "https://i.imgur.com/G0cMYtw.jpeg", alt: "Photo" },
-  { url: "https://i.imgur.com/QqUR34z.jpeg", alt: "Photo" },
-  { url: "https://i.imgur.com/aKit1T5.jpeg", alt: "Photo" },
-  { url: "https://i.imgur.com/wvulcEy.jpeg", alt: "Photo" },
-  { url: "https://i.imgur.com/6NZR1QG.jpeg", alt: "Photo" },
-  { url: "https://i.imgur.com/IChvXSj.jpeg", alt: "Photo" },
-  { url: "https://i.imgur.com/gZUc03m.jpeg", alt: "Photo" },
-  { url: "https://i.imgur.com/NV66v2t.jpeg", alt: "Photo" },
-  { url: "https://i.imgur.com/cDpb2wT.jpeg", alt: "Photo" },
-  { url: "https://i.imgur.com/TkBAidq.jpeg", alt: "Photo" },
-  { url: "https://i.imgur.com/HnZ8vsE.jpeg", alt: "Photo" },
-  { url: "https://i.imgur.com/zfo2XpN.jpeg", alt: "Photo" },
-  { url: "https://i.imgur.com/n3GPfYU.jpeg", alt: "Photo" },
-  { url: "https://i.imgur.com/MmMSACt.jpeg", alt: "Photo" },
-  { url: "https://i.imgur.com/7uCNuQY.jpeg", alt: "Photo" },
-  { url: "https://i.imgur.com/kFdwCX1.jpeg", alt: "Photo" },
-  { url: "https://i.imgur.com/kfOxoJw.jpeg", alt: "Photo" },
+  { url: "https://yjthu6vkxab3pogk.public.blob.vercel-storage.com/photography/79fe5ab5.jpg", alt: "Photo" },
+  { url: "https://yjthu6vkxab3pogk.public.blob.vercel-storage.com/photography/8f1d0d00.jpg", alt: "Photo" },
+  { url: "https://yjthu6vkxab3pogk.public.blob.vercel-storage.com/photography/c4e8bac8.jpg", alt: "Photo" },
+  { url: "https://yjthu6vkxab3pogk.public.blob.vercel-storage.com/photography/caf0cdca.jpg", alt: "Photo" },
+  { url: "https://yjthu6vkxab3pogk.public.blob.vercel-storage.com/photography/ea310828.jpg", alt: "Photo" },
+  { url: "https://yjthu6vkxab3pogk.public.blob.vercel-storage.com/photography/f7e3835b.jpg", alt: "Photo" },
+  { url: "https://yjthu6vkxab3pogk.public.blob.vercel-storage.com/photography/f98e31cf.jpg", alt: "Photo" },
+  { url: "https://yjthu6vkxab3pogk.public.blob.vercel-storage.com/photography/image02.jpg", alt: "Photo" },
 ];
 
 const Photography = () => (
