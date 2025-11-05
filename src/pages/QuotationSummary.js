@@ -5,7 +5,7 @@ import { useSelection } from "../context/SelectionContext";
 import "../App.css";
 
 const QuotationSummary = () => {
-  const { selections, resetSelections } = useSelection();
+  const { selections, clearSelections } = useSelection();
 
   // If no selections made
   const hasSelections = selections && Object.keys(selections).length > 0;
@@ -87,9 +87,12 @@ const QuotationSummary = () => {
               >
                 ✉️ Send via Email
               </button>
+              <button onClick={() => alert("Your selections are saved automatically!")}>
+                💾 Save for Later
+              </button>
               <button
                 onClick={() => {
-                  resetSelections();
+                  clearSelections();
                   alert("Selections cleared. You can start a new quotation!");
                 }}
               >

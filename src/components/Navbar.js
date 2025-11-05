@@ -35,7 +35,7 @@ const Navbar = () => {
             onClick={() => handleNavClick("/about")}
             className={({ isActive }) => (isActive ? "active-link" : "")}
           >
-            About
+            About Us
           </NavLink>
           <NavLink
             to="/service-selection"
@@ -49,7 +49,7 @@ const Navbar = () => {
             onClick={() => handleNavClick("/contact")}
             className={({ isActive }) => (isActive ? "active-link" : "")}
           >
-            Contact
+            Contact Us
           </NavLink>
         </nav>
 

@@ -55,7 +55,6 @@ const CategoryPageLayout = ({ title, currentCategory, packages, photos }) => {
       {/* Sidebar (left panel with steps) */}
       <aside className="sidebar-column">
         <ServiceSidebar currentCategory={currentCategory} />
-        <LiveSummarySidebar /> {/* 👈 Moved here below quotation steps */}
       </aside>
 
       {/* Main Content Area */}

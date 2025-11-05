@@ -1,55 +1,46 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 
-// ✅ Create the context
 const SelectionContext = createContext();
 
-// ✅ Custom hook for consuming context easily
-export const useSelection = () => {
-  const context = useContext(SelectionContext);
-  if (!context) {
-    throw new Error("useSelection must be used within a SelectionProvider");
-  }
-  return context;
-};
-
-// ✅ The provider component (wraps your whole app)
 export const SelectionProvider = ({ children }) => {
-  // Store selected plans for each service category
   const [selections, setSelections] = useState({});
-
-  // Define order of service categories
-  const serviceOrder = [
+  const [serviceOrder] = useState([
     "photography",
     "catering",
-    "makeup",
     "decoration",
     "sangeet",
-  ];
+    "makeup",
+  ]);
 
-  // Update the selection for a given category
+  // ✅ Load selections from localStorage on app start
+  useEffect(() => {
+    const savedSelections = localStorage.getItem("spgSelections");
+    if (savedSelections) {
+      setSelections(JSON.parse(savedSelections));
+    }
+  }, []);
+
+  // ✅ Auto-save selections whenever they change
+  useEffect(() => {
+    localStorage.setItem("spgSelections", JSON.stringify(selections));
+  }, [selections]);
+
   const updateSelection = (category, plan) => {
-    setSelections((prev) => ({
-      ...prev,
-      [category]: plan,
-    }));
+    setSelections((prev) => ({ ...prev, [category]: plan }));
   };
 
-  // Clear all selections (for restarting quotation flow)
-  const resetSelections = () => {
+  const clearSelections = () => {
     setSelections({});
-  };
-
-  // Global context value
-  const value = {
-    selections,
-    updateSelection,
-    resetSelections,
-    serviceOrder,
+    localStorage.removeItem("spgSelections");
   };
 
   return (
-    <SelectionContext.Provider value={value}>
+    <SelectionContext.Provider
+      value={{ selections, updateSelection, clearSelections, serviceOrder }}
+    >
       {children}
     </SelectionContext.Provider>
   );
 };
+
+export const useSelection = () => useContext(SelectionContext);
